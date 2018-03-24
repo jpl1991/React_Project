@@ -1,9 +1,20 @@
 import React from 'react'
 import ReactDom from 'react-dom'
 
-ReactDom.render(
 
-	<h1> Welcome to my page </h1>,
+
+let name = 'Peilin Jiang'
+
+setInterval(function() {
+	ReactDom.render(
+
+
+	<h2>Time now:- {new Date().toLocaleString()}</h2>,
+
 	document.getElementById('root')
 
 	);
+},1000);
+
+
+
