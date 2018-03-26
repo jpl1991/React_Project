@@ -3,18 +3,33 @@ import ReactDom from 'react-dom'
 
 
 
-let name = 'Peilin Jiang'
+//let name = 'Peilin Jiang'
 
-setInterval(function() {
-	ReactDom.render(
+//function must be a capital letter
+function Cartoon(props){
+	return <h1> Hello, {props.name}, {props.lastname}</h1>
+};
+
+function Show(props){
+	return <div>
+			<Cartoon name = "Peilin" lastname = "Jiang"/>
+			<Cartoon name = "Peiru" lastname = "Jiang"/>
+			</div>
+};
+/*class Cartoon extends React.Component{
+
+	render(){
+		return <h1>hello, {this.props.name}</h1>
+	}
+}*/
 
 
-	<h2>Time now:- {new Date().toLocaleString()}</h2>,
 
-	document.getElementById('root')
+ReactDom.render(
 
-	);
-},1000);
+	<Show/>,
 
+	document.getElementById("root")
+);
 
 
