@@ -3,33 +3,43 @@ import ReactDom from 'react-dom'
 
 
 
-//let name = 'Peilin Jiang'
+class Clock extends React.Component{
+	constructor(props){
 
-//function must be a capital letter
-function Cartoon(props){
-	return <h1> Hello, {props.name}, {props.lastname}</h1>
-};
+		super(props);
 
-function Show(props){
-	return <div>
-			<Cartoon name = "Peilin" lastname = "Jiang"/>
-			<Cartoon name = "Peiru" lastname = "Jiang"/>
-			</div>
-};
-/*class Cartoon extends React.Component{
+		this.state ={
+			date: new Date()
+		}
+	}
+
+	componentDidMount(){
+		this.timer=setInterval(()=>this.start(),1000);
+
+	}
+
+	componentWillUnmount(){
+		clearInterval(this.timer);
+	}
+
+	start(){
+		this.setState({date: new Date()});
+	}
 
 	render(){
-		return <h1>hello, {this.props.name}</h1>
+		return <h1> Time is :{this.state.date.toLocaleTimeString()}</h1>
 	}
-}*/
+}
 
 
 
-ReactDom.render(
+	ReactDom.render(
+		<Clock/>,
+		document.getElementById("root")
+	);
 
-	<Show/>,
 
-	document.getElementById("root")
-);
+
+
 
 
