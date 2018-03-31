@@ -38,63 +38,66 @@ class Clock extends React.Component{
 		document.getElementById("root")
 	);
 */
-
-let name = 'Peilin Jiang'
-
-class Clock extends React.Component{
+/*
+class Inc extends React.Component{
 	constructor(props){
 		super(props);
-		this.state= {date: new Date};
+		this.state = {counter:0}
 	}
 
-	componentDidMount(){
-		this.timer = setInterval(
-			()=>this.tick(),1000
-			);
+	increment(e){
+		e.preventDefault();
+		this.setState({
+			counter: this.state.counter + 1
+		});
+	}
+	render(){
+		return <button onClick = {(e)=>this.increment(e)}>Value is {this.state.counter}</button>
+	}
+}
+
+ReactDom.render(
+	<Inc/>,
+	document.getElementById("root")
+	)
+*/
+
+function Message(props){
+
+	if(props.value){
+		return	<h1>This is a message</h1>
+	}
+	return <h1>This is second message</h1>
+}
+
+
+class Butt extends React.Component{
+	constructor(props){
+		super(props);
+		this.state ={value:true}
 	}
 
-	componentUnMount(){
-		clearInterval( this.timer);
-
-	}
-
-	tick(){
-		this.setState({date: new Date()});
-
+	handleClick = () => {
+		this.setState({
+			value:!this.state.value
+		});
 	}
 
 	render(){
 		return(
 			<div>
-				<h1> Hello {name}</h1>
-				<h2> It is {this.state.date.toLocaleTimeString()}</h2>
+				<button onClick={this.handleClick}> Change message </button>
+				<Message value={this.state.value}/>
 			</div>
-
-			);
-		}
-}
-
-function App(){
-	return(
-		<div>
-			<Clock/>
-			<Clock/>
-			<Clock/>
-		</div>
-		)
-
+			)
+	}
 
 }
 
 ReactDom.render(
-		<App/>,
-		document.getElementById("root")
-		);
-
-
-
-
-
+	<Butt/>,
+	document.getElementById("root")
+	)
 
 
 
