@@ -62,7 +62,7 @@ ReactDom.render(
 	)
 */
 
-function Message(props){
+/*function Message(props){
 
 	if(props.value){
 		return	<h1>This is a message</h1>
@@ -97,8 +97,38 @@ class Butt extends React.Component{
 ReactDom.render(
 	<Butt/>,
 	document.getElementById("root")
-	)
+	)*/
 
+class Toggle extends React.Component{
+	constructor(props){
+		super(props);
+		this.state = {isToggleOn:true};
+
+		this.handleClick = this.handleClick.bind(this);
+	}
+
+	handleClick(){
+		this.setState(prevState=>({
+			isToggleOn: !prevState.isToggleOn
+
+		}));
+	}
+
+
+	render(){
+		return (<button onClick = {this.handleClick}>
+		 		{this.state.isToggleOn ? 'ON': 'OFF'}
+
+		 	 </button>);
+	}
+
+}
+
+ReactDom.render(
+	<Toggle/>,
+	document.getElementById("root")
+
+	)
 
 
 
