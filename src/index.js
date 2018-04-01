@@ -99,7 +99,7 @@ ReactDom.render(
 	document.getElementById("root")
 	)*/
 
-class Toggle extends React.Component{
+/*class Toggle extends React.Component{
 	constructor(props){
 		super(props);
 		this.state = {isToggleOn:true};
@@ -129,6 +129,52 @@ ReactDom.render(
 	document.getElementById("root")
 
 	)
+
+*/
+
+function WarningBanner(props) {
+  if (!props.warn) {
+    return null;
+  }
+
+  return (
+    <div className="warning">
+      Warning!
+    </div>
+  );
+}
+
+class Page extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {showWarning: true};
+    this.handleToggleClick = this.handleToggleClick.bind(this);
+  }
+
+  handleToggleClick() {
+    this.setState(prevState => ({
+      showWarning: !prevState.showWarning
+    }));
+  }
+
+  render() {
+    return (
+      <div>
+        <WarningBanner warn={this.state.showWarning} />
+        <button onClick={this.handleToggleClick}>
+          {this.state.showWarning ? 'Hide' : 'Show'}
+        </button>
+      </div>
+    );
+  }
+}
+
+ReactDom.render(
+  <Page />,
+  document.getElementById('root')
+);
+
+
 
 
 
